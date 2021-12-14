@@ -8,7 +8,7 @@ export default function HomePage() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetchTrending('day').then(setMovies);
+    fetchTrending().then(setMovies).then({ setMovies });
   }, []);
 
   return (
