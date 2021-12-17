@@ -3,12 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { fetchTrending } from '../services/api-services';
 import PageHeading from '../components/PageHeading/PageHeadind';
 
-export default function HomePage() {
+export default function HomeView() {
   const location = useLocation();
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(null);
 
   useEffect(() => {
-    fetchTrending().then(setMovies).then({ setMovies });
+    fetchTrending().then(data => setMovies(data.results));
   }, []);
 
   return (
