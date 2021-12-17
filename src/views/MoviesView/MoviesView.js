@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { fetchSearchMovies } from '../services/api-services';
-import Loader from '../components/Loader/Loader';
-import SearchForm from '../components/SearchForm/SearchForm';
-import MoviesGallery from '../components/MoviesGallery/MoviesGallery';
+import { fetchSearchMovies } from '../../services/api-services';
+import Loader from '../../components/Loader/Loader';
+import SearchForm from '../../components/SearchForm/SearchForm';
+import MoviesGallery from '../../components/MoviesGallery/MoviesGallery';
 
 export default function MoviesView() {
   const [query, setQuery] = useState('');

@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { IMAGE } from '../../services/api-services';
+import defaultImage from '../../components/default.jpg';
 import s from './MoviesGallery.module.css';
 
 export default function MoviesGallery({ movies }) {
@@ -12,7 +13,11 @@ export default function MoviesGallery({ movies }) {
           <Link to={`/movies/${movie.id}`} state={{ from: location }}>
             <img
               className={s.MoviesGalleryItem_Image}
-              src={`${IMAGE}${movie.poster_path}`}
+              src={
+                movie.poster_path
+                  ? `${IMAGE}${movie.poster_path}`
+                  : defaultImage
+              }
               alt={movie.title || movie.name}
             ></img>
             <p className={s.GalleryTitle}>{movie.title || movie.name}</p>

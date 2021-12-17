@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { fetchTrending } from '../services/api-services';
-import PageHeading from '../components/PageHeading/PageHeadind';
+import { fetchTrending } from '../../services/api-services';
+import PageHeading from '../../components/PageHeading/PageHeadind';
 
 export default function HomeView() {
   const location = useLocation();
