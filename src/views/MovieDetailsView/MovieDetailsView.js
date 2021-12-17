@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import {
   NavLink,
   useParams,
@@ -9,11 +9,12 @@ import {
 } from 'react-router-dom';
 import { fetchMovieDetails } from '../../services/api-services';
 import { IMAGE } from '../../services/api-services';
-import Cast from '../../components/Cast/Cast';
-import Reviews from '../../components/Rewiews/Reviews';
 import Loader from '../../components/Loader/Loader';
 import defaultImage from '../../components/default.jpg';
 import s from './MovieDetailsView.module.css';
+
+const Cast = lazy(() => import('../../components/Cast/Cast'));
+const Reviews = lazy(() => import('../../components/Rewiews/Reviews'));
 
 export default function MovieDetailsView() {
   const { movieId } = useParams();
@@ -106,12 +107,12 @@ export default function MovieDetailsView() {
           </NavLink>
         </div>
         <hr />
-        {/* <Suspense> */}
-        <Routes>
-          <Route path="/cast" element={<Cast />} />
-          <Route path="/reviews" element={<Reviews />} />
-        </Routes>
-        {/* </Suspense> */}
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/cast" element={<Cast />} />
+            <Route path="/reviews" element={<Reviews />} />
+          </Routes>
+        </Suspense>
       </>
     );
   }
