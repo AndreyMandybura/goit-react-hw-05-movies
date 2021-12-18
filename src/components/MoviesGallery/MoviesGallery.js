@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { IMAGE } from '../../services/api-services';
 import defaultImage from '../../components/default.jpg';
 import s from './MoviesGallery.module.css';
@@ -27,3 +28,7 @@ export default function MoviesGallery({ movies }) {
     </ul>
   );
 }
+
+MoviesGallery.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object),
+};
